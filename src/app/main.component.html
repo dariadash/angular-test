@@ -1,0 +1,50 @@
+<h1>Список пользователей</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="addUser()" />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Email</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td (click)="goToUser(user)">{{user.id}}</td>
+            <td (click)="goToUser(user)">{{user.email}}</td>
+            <td (click)="goToUser(user)">{{user.first_name}}</td>
+            <td (click)="goToUser(user)">{{user.last_name}}</td>
+            <td>
+                <input type="button" value="Удалить" (click)="deleteUser(user)" class="btn btn-danger" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>{{statusMessage}}</div>
+
+<h1>Список ресурсов</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Название</td>
+            <td>Год</td>
+            <td>Цвет</td>
+            <td>pantone_value</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let resource of resources">
+            <td>{{resource.id}}</td>
+            <td>{{resource.name}}</td>
+            <td>{{resource.year}}</td>
+            <td background-color={{resource.color}}>{{resource.color}}</td>
+            <td>{{resource.pantone_value}}</td>
+        </tr>
+    </tbody>
+</table>

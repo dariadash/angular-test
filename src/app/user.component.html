@@ -1,0 +1,44 @@
+<div>
+    <nav>
+        <a routerLink="">Главная</a>
+    </nav>
+    <ng-template [ngTemplateOutlet]="loadTemplate(user)" [ngTemplateOutletContext]="{ $implicit: user}">
+    </ng-template>
+</div>
+
+<!--шаблон для чтения-->
+<ng-template #readOnlyTemplate let-user>
+    <td>{{user.id}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.first_name}}</td>
+    <td>{{user.last_name}}</td>
+    <img src={{user.avatar}} alt='' />
+    <td>
+        <input type="button" value="Изменить" class="btn btn-default" (click)="editUser(user)" />
+    </td>
+    <td>
+        <input type="button" value="Удалить" (click)="deleteUser(user)" class="btn btn-danger" />
+    </td>
+</ng-template>
+
+<!--шаблон для редактирования-->
+<ng-template #editTemplate>
+    <td>
+        <input type="number" [(ngModel)]="editedUser.id" readonly disabled class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedUser.email" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedUser.first_name" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="editedUser.last_name" class="form-control" />
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="saveUser()" class="btn btn-success" />
+    </td>
+    <td>
+        <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning" />
+    </td>
+</ng-template>
